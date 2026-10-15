@@ -45,11 +45,12 @@ export default function DashboardPage() {
   const addEvent = useStore((s) => s.addEvent)
   const [quickAdd, setQuickAdd] = useState(false)
   const [weekOffset, setWeekOffset] = useState(0)
+  const [today] = useState(() => new Date())
 
-  const weekStart = useMemo(() => {
-    const s = startOfWeek(new Date())
-    return addDays(s, weekOffset * 7)
-  }, [weekOffset])
+  const weekStart = useMemo(
+    () => addDays(startOfWeek(today), weekOffset * 7),
+    [today, weekOffset],
+  )
   const weekEnd = useMemo(() => endOfWeek(weekStart), [weekStart])
 
   const report = useMemo(
@@ -58,13 +59,12 @@ export default function DashboardPage() {
   )
 
   const upcoming = useMemo(() => {
-    const now = new Date()
-    const limit = addDays(now, 7)
+    const limit = addDays(today, 7)
     return events
-      .filter((e) => !e.done && isWithin(e.date, now, limit))
+      .filter((e) => !e.done && isWithin(e.date, today, limit))
       .sort((a, b) => a.date.localeCompare(b.date))
       .slice(0, 6)
-  }, [events])
+  }, [events, today])
 
   const handleQuickAdd = (values: EventFormValues) => {
     addEvent({ ...values })
