@@ -1,0 +1,42 @@
+{
+  "app": {
+    "title": "Job Tracker"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "procesos": "Procesos",
+    "calendario": "Calendario",
+    "perfil": "Perfil",
+    "enlaces": "Enlaces útiles",
+    "preferencias": "Preferencias"
+  },
+  "pages": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Tu actividad de búsqueda laboral de un vistazo"
+    },
+    "procesos": {
+      "title": "Procesos",
+      "subtitle": "Seguimiento de tus postulaciones por etapa"
+    },
+    "calendario": {
+      "title": "Calendario",
+      "subtitle": "Contactos, entrevistas y tareas en un solo lugar"
+    },
+    "perfil": {
+      "title": "Perfil",
+      "subtitle": "Skills duras y blandas, obtenidas y por obtener"
+    },
+    "enlaces": {
+      "title": "Enlaces útiles",
+      "subtitle": "Recursos y bookmarks guardados"
+    },
+    "preferencias": {
+      "title": "Preferencias",
+      "subtitle": "Exportá o importá tus datos para continuar en otro navegador"
+    }
+  },
+  "common": {
+    "comingSoon": "Próximamente"
+  }
+}
