@@ -106,6 +106,8 @@
     "empty": "Todavía no guardaste enlaces. Agregá recursos con «Nuevo enlace».",
     "noResults": "Ningún enlace coincide con el filtro.",
     "confirmDelete": "¿Eliminar este enlace?",
+    "drag": "Arrastrar",
+    "dragHint": "Arrastrá el ícono de la derecha para reordenar.",
     "form": {
       "newTitle": "Nuevo enlace",
       "editTitle": "Editar enlace",

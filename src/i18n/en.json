@@ -106,6 +106,8 @@
     "empty": "You haven't saved any links yet. Add resources with «New link».",
     "noResults": "No link matches the filter.",
     "confirmDelete": "Delete this link?",
+    "drag": "Drag",
+    "dragHint": "Drag the icon on the right to reorder.",
     "form": {
       "newTitle": "New link",
       "editTitle": "Edit link",
