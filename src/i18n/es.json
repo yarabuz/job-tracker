@@ -63,6 +63,27 @@
       }
     }
   },
+  "skills": {
+    "new": "Nueva skill",
+    "hard": "Duras",
+    "soft": "Blandas",
+    "obtainedTitle": "Obtenidas",
+    "pendingTitle": "Por obtener",
+    "empty": "Sin skills en esta categoría todavía.",
+    "markObtained": "Marcar como obtenida",
+    "markPending": "Marcar como pendiente",
+    "confirmDelete": "¿Eliminar esta skill?",
+    "form": {
+      "newTitle": "Nueva skill",
+      "editTitle": "Editar skill",
+      "name": "Nombre",
+      "kind": "Tipo",
+      "level": "Nivel",
+      "targetNotes": "Nota objetivo",
+      "targetNotesPlaceholder": "Ej: practicar con proyectos, curso pendiente…",
+      "obtained": "Ya la tengo"
+    }
+  },
   "eventTypes": {
     "contact": "Contacto",
     "interview": "Entrevista",

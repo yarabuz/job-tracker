@@ -6,6 +6,7 @@ import {
   type AppEvent,
   type DataState,
   type Process,
+  type Skill,
 } from './types'
 
 interface StoreActions {
@@ -26,6 +27,12 @@ interface StoreActions {
     patch: Partial<Omit<AppEvent, 'id' | 'createdAt'>>,
   ) => void
   deleteEvent: (id: string) => void
+  addSkill: (input: Omit<Skill, 'id' | 'createdAt'>) => Skill
+  updateSkill: (
+    id: string,
+    patch: Partial<Omit<Skill, 'id' | 'createdAt'>>,
+  ) => void
+  deleteSkill: (id: string) => void
 }
 
 export type Store = DataState & StoreActions
@@ -92,6 +99,24 @@ export const useStore = create<Store>()(
 
       deleteEvent: (id) =>
         set((s) => ({ events: s.events.filter((e) => e.id !== id) })),
+
+      addSkill: (input) => {
+        const skill: Skill = {
+          ...input,
+          id: crypto.randomUUID(),
+          createdAt: new Date().toISOString(),
+        }
+        set((s) => ({ skills: [...s.skills, skill] }))
+        return skill
+      },
+
+      updateSkill: (id, patch) =>
+        set((s) => ({
+          skills: s.skills.map((sk) => (sk.id === id ? { ...sk, ...patch } : sk)),
+        })),
+
+      deleteSkill: (id) =>
+        set((s) => ({ skills: s.skills.filter((sk) => sk.id !== id) })),
     }),
     {
       name: 'job-tracker-data',
