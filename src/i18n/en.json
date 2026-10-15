@@ -1,0 +1,204 @@
+{
+  "app": {
+    "title": "Job Tracker"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "procesos": "Processes",
+    "calendario": "Calendar",
+    "preguntas": "Questions",
+    "perfil": "Profile",
+    "enlaces": "Useful links",
+    "preferencias": "Preferences"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "system": "System",
+    "dark": "Dark"
+  },
+  "lang": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English"
+  },
+  "pages": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Your job search activity at a glance"
+    },
+    "procesos": {
+      "title": "Processes",
+      "subtitle": "Track your applications by stage"
+    },
+    "calendario": {
+      "title": "Calendar",
+      "subtitle": "Contacts, interviews and tasks in one place"
+    },
+    "perfil": {
+      "title": "Profile",
+      "subtitle": "Hard and soft skills, obtained and to obtain"
+    },
+    "enlaces": {
+      "title": "Useful links",
+      "subtitle": "Saved resources and bookmarks"
+    },
+    "preguntas": {
+      "title": "Questions",
+      "subtitle": "Question and answer categories to practice"
+    },
+    "preferencias": {
+      "title": "Preferences",
+      "subtitle": "Export or import your data to continue on another browser",
+      "export": {
+        "title": "Export data",
+        "description": "Download a JSON file with all your data to back it up or take it to another browser or PC.",
+        "button": "Download JSON",
+        "lastExport": "Last export",
+        "never": "Never"
+      },
+      "import": {
+        "title": "Import data",
+        "description": "Load a previously exported JSON file. It will replace the current data in this browser.",
+        "button": "Select JSON file…",
+        "success": "Data imported successfully",
+        "confirm": "This will replace all your current data. Continue?",
+        "errors": {
+          "invalid-json": "The file is not valid JSON",
+          "invalid-schema": "The file does not have the Job Tracker format",
+          "newer-version": "The file was created by a newer version of the app"
+        }
+      },
+      "reset": {
+        "title": "Delete all data",
+        "description": "Removes all content stored in this browser.",
+        "button": "Delete data",
+        "confirm1": "Are you sure you want to delete all data in this browser?",
+        "confirm2": "This action cannot be undone. Confirm permanent deletion?",
+        "success": "Data deleted"
+      }
+    }
+  },
+  "dashboard": {
+    "quickAdd": "Log activity",
+    "weekActivity": "This week's activity",
+    "totalWeek": "Total activities",
+    "activeProcesses": "Active processes",
+    "upcoming": "Next 7 days",
+    "noUpcoming": "No pending activities in the next 7 days.",
+    "processesByStage": "Processes by stage",
+    "weeklyReport": "Weekly report",
+    "thisWeek": "This week",
+    "prevWeek": "Previous week",
+    "nextWeek": "Next week",
+    "byProcess": "Activities by process",
+    "processCol": "Process",
+    "countCol": "Count",
+    "withoutProcess": "No process",
+    "noWeekActivity": "No activities this week.",
+    "conversion": "This week's conversion",
+    "exportMarkdown": "Export report (Markdown)"
+  },
+  "links": {
+    "new": "New link",
+    "searchPlaceholder": "Search title, URL, tag or note…",
+    "allTags": "All",
+    "empty": "You haven't saved any links yet. Add resources with «New link».",
+    "noResults": "No link matches the filter.",
+    "confirmDelete": "Delete this link?",
+    "form": {
+      "newTitle": "New link",
+      "editTitle": "Edit link",
+      "title": "Title",
+      "url": "URL",
+      "tags": "Tags",
+      "tagsPlaceholder": "e.g. resume, interviews, salaries",
+      "notes": "Notes"
+    }
+  },
+  "skills": {
+    "new": "New skill",
+    "hard": "Hard",
+    "soft": "Soft",
+    "obtainedTitle": "Obtained",
+    "pendingTitle": "To obtain",
+    "empty": "No skills in this category yet.",
+    "markObtained": "Mark as obtained",
+    "markPending": "Mark as pending",
+    "confirmDelete": "Delete this skill?",
+    "form": {
+      "newTitle": "New skill",
+      "editTitle": "Edit skill",
+      "name": "Name",
+      "kind": "Kind",
+      "level": "Level",
+      "targetNotes": "Target note",
+      "targetNotesPlaceholder": "e.g. practice with projects, pending course…",
+      "obtained": "I already have it"
+    }
+  },
+  "eventTypes": {
+    "contact": "Contact",
+    "interview": "Interview",
+    "followup": "Follow-up",
+    "application": "Application",
+    "task": "Task"
+  },
+  "calendario": {
+    "new": "New activity",
+    "confirmDelete": "Delete this activity?",
+    "form": {
+      "newTitle": "New activity",
+      "editTitle": "Edit activity",
+      "title": "Title",
+      "type": "Type",
+      "date": "Date",
+      "time": "Time (optional)",
+      "process": "Related process",
+      "noProcess": "No process",
+      "notes": "Notes",
+      "done": "Mark as done"
+    }
+  },
+  "stages": {
+    "saved": "Saved",
+    "applied": "Applied",
+    "interviewing": "Interviewing",
+    "offer": "Offer",
+    "rejected": "Rejected",
+    "ghosted": "No response"
+  },
+  "procesos": {
+    "new": "New process",
+    "edit": "Edit",
+    "openJob": "Posting",
+    "searchPlaceholder": "Search company, role or note…",
+    "empty": "No processes yet. Create the first one with «New process».",
+    "noResults": "No process matches the search.",
+    "confirmDelete": "Delete this process and all its associated activities?",
+    "form": {
+      "newTitle": "New process",
+      "editTitle": "Edit process",
+      "company": "Company",
+      "role": "Role",
+      "stage": "Stage",
+      "jobUrl": "Job posting URL",
+      "salaryNote": "Salary note",
+      "notes": "Notes"
+    }
+  },
+  "fullcalendar": {
+    "today": "Today",
+    "month": "Month",
+    "week": "Week",
+    "list": "List"
+  },
+  "common": {
+    "comingSoon": "Coming soon",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "close": "Close",
+    "openMenu": "Open menu"
+  }
+}

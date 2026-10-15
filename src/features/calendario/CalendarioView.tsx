@@ -6,6 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import esLocale from '@fullcalendar/core/locales/es'
 import type { EventClickArg } from '@fullcalendar/core'
 import type { DateClickArg } from '@fullcalendar/interaction'
+import { useTranslation } from 'react-i18next'
 import type { AppEvent } from '../../store/types'
 import { eventColor } from './eventMeta'
 
@@ -31,6 +32,8 @@ export default function CalendarioView({
   onDateClick: (arg: DateClickArg) => void
   onEventClick: (arg: EventClickArg) => void
 }) {
+  const { t, i18n } = useTranslation()
+  const isEs = i18n.language === 'es'
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800">
       <FullCalendar
@@ -42,12 +45,12 @@ export default function CalendarioView({
           right: 'dayGridMonth,timeGridWeek,listWeek',
         }}
         buttonText={{
-          today: 'Hoy',
-          month: 'Mes',
-          week: 'Semana',
-          list: 'Lista',
+          today: t('fullcalendar.today'),
+          month: t('fullcalendar.month'),
+          week: t('fullcalendar.week'),
+          list: t('fullcalendar.list'),
         }}
-        locale={esLocale}
+        locale={isEs ? esLocale : undefined}
         firstDay={1}
         height="auto"
         events={events.map(toFcEvent)}

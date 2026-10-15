@@ -4,6 +4,7 @@ import { AlertCircle, CheckCircle2, Download, Trash2, Upload } from 'lucide-reac
 import PageHeader from '../components/PageHeader'
 import { useStore } from '../store/useStore'
 import { downloadJson, parseImportedData } from '../lib/backup'
+import { intlLocale } from '../lib/dates'
 
 type Notice =
   | { kind: 'success' | 'error'; message: string }
@@ -11,7 +12,7 @@ type Notice =
 
 function formatDate(iso: string | null, t: (k: string) => string): string {
   if (!iso) return t('pages.preferencias.export.never')
-  return new Date(iso).toLocaleString('es-AR', {
+  return new Date(iso).toLocaleString(intlLocale(), {
     dateStyle: 'medium',
     timeStyle: 'short',
   })

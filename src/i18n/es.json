@@ -187,6 +187,12 @@
       "notes": "Notas"
     }
   },
+  "fullcalendar": {
+    "today": "Hoy",
+    "month": "Mes",
+    "week": "Semana",
+    "list": "Lista"
+  },
   "common": {
     "comingSoon": "Próximamente",
     "cancel": "Cancelar",

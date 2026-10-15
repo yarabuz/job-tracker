@@ -1,3 +1,9 @@
+import i18n from '../i18n'
+
+export function intlLocale(): string {
+  return i18n.language === 'en' ? 'en-US' : 'es-AR'
+}
+
 export function startOfWeek(d: Date): Date {
   const r = new Date(d)
   r.setHours(0, 0, 0, 0)
@@ -27,12 +33,15 @@ export function toISODate(d: Date): string {
 }
 
 export function formatShortRange(start: Date, end: Date): string {
-  const fmt = new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'short' })
+  const fmt = new Intl.DateTimeFormat(intlLocale(), {
+    day: 'numeric',
+    month: 'short',
+  })
   return `${fmt.format(start)} – ${fmt.format(new Date(end.getTime() - 1))}`
 }
 
 export function formatDayShort(d: Date): string {
-  return new Intl.DateTimeFormat('es-AR', {
+  return new Intl.DateTimeFormat(intlLocale(), {
     weekday: 'short',
     day: 'numeric',
     month: 'short',

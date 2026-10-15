@@ -1,12 +1,22 @@
 import type { AppEvent, EventType, Process } from '../store/types'
-import { isWithin } from './dates'
+import { intlLocale, isWithin } from './dates'
+import i18n from '../i18n'
 
-const TYPE_LABELS: Record<EventType, string> = {
-  contact: 'Contacto',
-  interview: 'Entrevista',
-  followup: 'Seguimiento',
-  application: 'Postulación',
-  task: 'Tarea',
+const TYPE_LABELS: Record<string, Record<EventType, string>> = {
+  es: {
+    contact: 'Contacto',
+    interview: 'Entrevista',
+    followup: 'Seguimiento',
+    application: 'Postulación',
+    task: 'Tarea',
+  },
+  en: {
+    contact: 'Contact',
+    interview: 'Interview',
+    followup: 'Follow-up',
+    application: 'Application',
+    task: 'Task',
+  },
 }
 
 const TYPE_ORDER: EventType[] = [
@@ -75,45 +85,67 @@ export function buildWeekReport(
 }
 
 export function reportToMarkdown(report: WeekReport): string {
-  const fmtDay = new Intl.DateTimeFormat('es-AR', {
+  const lang = i18n.language === 'en' ? 'en' : 'es'
+  const labels = TYPE_LABELS[lang]
+  const fmtDay = new Intl.DateTimeFormat(intlLocale(), {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   })
   const lines: string[] = []
 
-  lines.push(`# Reporte semanal — ${fmtDay.format(report.start)}`)
+  lines.push(
+    lang === 'en'
+      ? `# Weekly report — ${fmtDay.format(report.start)}`
+      : `# Reporte semanal — ${fmtDay.format(report.start)}`,
+  )
   lines.push('')
-  lines.push(`**Total de actividades:** ${report.total}`)
+  lines.push(
+    lang === 'en'
+      ? `**Total activities:** ${report.total}`
+      : `**Total de actividades:** ${report.total}`,
+  )
   lines.push('')
-  lines.push('## Por tipo')
+  lines.push(lang === 'en' ? '## By type' : '## Por tipo')
   lines.push('')
-  lines.push('| Tipo | Cantidad |')
+  lines.push(lang === 'en' ? '| Type | Count |' : '| Tipo | Cantidad |')
   lines.push('| --- | --- |')
   for (const t of TYPE_ORDER) {
-    lines.push(`| ${TYPE_LABELS[t]} | ${report.byType[t]} |`)
+    lines.push(`| ${labels[t]} | ${report.byType[t]} |`)
   }
   lines.push('')
-  lines.push('## Por proceso')
+  lines.push(lang === 'en' ? '## By process' : '## Por proceso')
   lines.push('')
   if (report.byProcess.length === 0) {
-    lines.push('_Sin actividades esta semana._')
+    lines.push(
+      lang === 'en' ? '_No activities this week._' : '_Sin actividades esta semana._',
+    )
   } else {
-    lines.push('| Proceso | Actividades |')
+    lines.push(
+      lang === 'en' ? '| Process | Activities |' : '| Proceso | Actividades |',
+    )
     lines.push('| --- | --- |')
     for (const row of report.byProcess) {
       const name = row.process
         ? `${row.process.company} — ${row.process.role}`
-        : 'Sin proceso'
+        : lang === 'en'
+          ? 'No process'
+          : 'Sin proceso'
       lines.push(`| ${name} | ${row.count} |`)
     }
   }
   lines.push('')
-  lines.push('## Conversión')
+  lines.push(lang === 'en' ? '## Conversion' : '## Conversión')
   lines.push('')
-  lines.push(
-    `Postulaciones: **${report.applications}** · Entrevistas: **${report.interviews}**`,
-  )
+  if (lang === 'en') {
+    lines.push(
+      `Applications: **${report.applications}** · Interviews: **${report.interviews}**`,
+    )
+  } else {
+    lines.push(
+      `Postulaciones: **${report.applications}** · Entrevistas: **${report.interviews}**`,
+    )
+  }
   lines.push('')
   return lines.join('\n')
 }
