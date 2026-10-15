@@ -68,7 +68,7 @@ export default function ProcesosPage() {
           <input
             type="search"
             placeholder={t('procesos.searchPlaceholder')}
-            className="w-64 rounded-lg border border-slate-300 py-2 pl-9 pr-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+            className="w-64 rounded-lg border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm text-slate-900 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-400"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -76,7 +76,7 @@ export default function ProcesosPage() {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center text-sm text-slate-500">
+        <div className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-400">
           {search ? t('procesos.noResults') : t('procesos.empty')}
         </div>
       ) : (

@@ -59,6 +59,9 @@ export interface Link {
   createdAt: string
 }
 
+export type ThemeSetting = 'light' | 'dark' | 'system'
+export type Language = 'es' | 'en'
+
 export interface DataState {
   schemaVersion: number
   processes: Process[]
@@ -66,6 +69,8 @@ export interface DataState {
   skills: Skill[]
   links: Link[]
   lastExportAt: string | null
+  theme: ThemeSetting
+  lang: Language
 }
 
 export function emptyData(): DataState {
@@ -76,5 +81,7 @@ export function emptyData(): DataState {
     skills: [],
     links: [],
     lastExportAt: null,
+    theme: 'system',
+    lang: 'es',
   }
 }

@@ -6,9 +6,21 @@
     "dashboard": "Dashboard",
     "procesos": "Procesos",
     "calendario": "Calendario",
+    "preguntas": "Preguntas",
     "perfil": "Perfil",
     "enlaces": "Enlaces útiles",
     "preferencias": "Preferencias"
+  },
+  "theme": {
+    "label": "Tema",
+    "light": "Claro",
+    "system": "Sistema",
+    "dark": "Oscuro"
+  },
+  "lang": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English"
   },
   "pages": {
     "dashboard": {
@@ -30,6 +42,10 @@
     "enlaces": {
       "title": "Enlaces útiles",
       "subtitle": "Recursos y bookmarks guardados"
+    },
+    "preguntas": {
+      "title": "Preguntas",
+      "subtitle": "Categorías de preguntas y respuestas para repasar"
     },
     "preferencias": {
       "title": "Preferencias",
@@ -73,6 +89,8 @@
     "processesByStage": "Procesos por etapa",
     "weeklyReport": "Reporte semanal",
     "thisWeek": "Esta semana",
+    "prevWeek": "Semana anterior",
+    "nextWeek": "Semana siguiente",
     "byProcess": "Actividades por proceso",
     "processCol": "Proceso",
     "countCol": "Cantidad",
@@ -174,6 +192,7 @@
     "cancel": "Cancelar",
     "save": "Guardar",
     "delete": "Eliminar",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "openMenu": "Abrir menú"
   }
 }

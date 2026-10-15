@@ -31,8 +31,8 @@ export default function KanbanColumn({
         ref={setNodeRef}
         className={`flex flex-1 flex-col gap-2 rounded-lg border-2 border-dashed p-2 transition-colors ${
           isOver
-            ? 'border-sky-400 bg-sky-50'
-            : `border-transparent bg-slate-50/70 ${meta.accent}`
+            ? 'border-sky-400 bg-sky-50 dark:border-sky-600 dark:bg-sky-950/40'
+            : `border-transparent bg-slate-50/70 dark:bg-slate-900/50 ${meta.accent}`
         }`}
       >
         {processes.map((p) => (

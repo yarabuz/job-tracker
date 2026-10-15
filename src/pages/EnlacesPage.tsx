@@ -80,7 +80,7 @@ export default function EnlacesPage() {
           <input
             type="search"
             placeholder={t('links.searchPlaceholder')}
-            className="w-64 rounded-lg border border-slate-300 py-2 pl-9 pr-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+            className="w-64 rounded-lg border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm text-slate-900 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-400"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -95,7 +95,7 @@ export default function EnlacesPage() {
             className={`rounded-full px-3 py-1 text-xs font-medium ${
               tagFilter === null
                 ? 'bg-sky-600 text-white'
-                : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
             }`}
           >
             {t('links.allTags')}
@@ -108,7 +108,7 @@ export default function EnlacesPage() {
               className={`rounded-full px-3 py-1 text-xs font-medium ${
                 tagFilter === tag
                   ? 'bg-sky-600 text-white'
-                  : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                  : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
               }`}
             >
               {tag}
@@ -118,7 +118,7 @@ export default function EnlacesPage() {
       )}
 
       {filtered.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center text-sm text-slate-500">
+        <div className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-400">
           {search || tagFilter ? t('links.noResults') : t('links.empty')}
         </div>
       ) : (
@@ -126,14 +126,14 @@ export default function EnlacesPage() {
           {filtered.map((link) => (
             <div
               key={link.id}
-              className="flex flex-col rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+              className="flex flex-col rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800"
             >
               <div className="flex items-start justify-between gap-2">
                 <a
                   href={link.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-700 hover:underline"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-700 hover:underline dark:text-sky-400"
                 >
                   <ExternalLink className="h-4 w-4 shrink-0" />
                   <span className="truncate">{link.title}</span>
@@ -142,7 +142,7 @@ export default function EnlacesPage() {
                   <button
                     type="button"
                     onClick={() => setModal({ mode: 'edit', link })}
-                    className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                    className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-700 dark:hover:text-slate-300"
                     aria-label={t('procesos.edit')}
                   >
                     <Pencil className="h-3.5 w-3.5" />
@@ -154,23 +154,27 @@ export default function EnlacesPage() {
                         deleteLink(link.id)
                       }
                     }}
-                    className="rounded p-1 text-slate-400 hover:bg-red-50 hover:text-red-600"
+                    className="rounded p-1 text-slate-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950 dark:hover:text-red-400"
                     aria-label={t('common.delete')}
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>
                 </div>
               </div>
-              <p className="mt-1 truncate text-xs text-slate-400">{link.url}</p>
+              <p className="mt-1 truncate text-xs text-slate-400 dark:text-slate-500">
+                {link.url}
+              </p>
               {link.notes && (
-                <p className="mt-2 text-xs text-slate-600">{link.notes}</p>
+                <p className="mt-2 text-xs text-slate-600 dark:text-slate-400">
+                  {link.notes}
+                </p>
               )}
               {link.tags.length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {link.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-600"
+                      className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-600 dark:bg-slate-700 dark:text-slate-300"
                     >
                       {tag}
                     </span>

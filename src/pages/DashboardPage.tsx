@@ -97,12 +97,12 @@ export default function DashboardPage() {
       </div>
 
       {/* Actividad de la semana */}
-      <section className="mb-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <section className="mb-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-base font-semibold text-slate-900">
+          <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">
             {t('dashboard.weekActivity')}
           </h2>
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-slate-500 dark:text-slate-400">
             {formatShortRange(weekStart, weekEnd)}
           </span>
         </div>
@@ -112,13 +112,13 @@ export default function DashboardPage() {
               <p className="text-2xl font-bold" style={{ color: et.color }}>
                 {report.byType[et.key]}
               </p>
-              <p className="text-xs font-medium text-slate-600">
+              <p className="text-xs font-medium text-slate-600 dark:text-slate-400">
                 {t(et.labelKey)}
               </p>
             </div>
           ))}
         </div>
-        <p className="mt-3 text-sm text-slate-600">
+        <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
           {t('dashboard.totalWeek')}: <strong>{report.total}</strong> ·{' '}
           {t('dashboard.activeProcesses')}: <strong>{activeCount}</strong>
         </p>
@@ -126,15 +126,17 @@ export default function DashboardPage() {
 
       <div className="mb-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
         {/* Próximos eventos */}
-        <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="mb-3 flex items-center gap-2 text-base font-semibold text-slate-900">
+        <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+          <h2 className="mb-3 flex items-center gap-2 text-base font-semibold text-slate-900 dark:text-slate-100">
             <CalendarClock className="h-4 w-4 text-sky-600" />
             {t('dashboard.upcoming')}
           </h2>
           {upcoming.length === 0 ? (
-            <p className="text-sm text-slate-400">{t('dashboard.noUpcoming')}</p>
+            <p className="text-sm text-slate-400 dark:text-slate-500">
+              {t('dashboard.noUpcoming')}
+            </p>
           ) : (
-            <ul className="flex flex-col divide-y divide-slate-100">
+            <ul className="flex flex-col divide-y divide-slate-100 dark:divide-slate-700">
               {upcoming.map((e) => {
                 const meta = EVENT_TYPES.find((et) => et.key === e.type)
                 const proc = processes.find((p) => p.id === e.processId)
@@ -144,14 +146,14 @@ export default function DashboardPage() {
                       className="h-2 w-2 shrink-0 rounded-full"
                       style={{ backgroundColor: meta?.color }}
                     />
-                    <span className="shrink-0 text-xs font-medium text-slate-500">
+                    <span className="shrink-0 text-xs font-medium text-slate-500 dark:text-slate-400">
                       {formatDayShort(new Date(e.date))}
                     </span>
-                    <span className="min-w-0 flex-1 truncate text-sm text-slate-800">
+                    <span className="min-w-0 flex-1 truncate text-sm text-slate-800 dark:text-slate-200">
                       {e.title}
                     </span>
                     {proc && (
-                      <span className="shrink-0 truncate text-xs text-slate-400">
+                      <span className="shrink-0 truncate text-xs text-slate-400 dark:text-slate-500">
                         {proc.company}
                       </span>
                     )}
@@ -163,8 +165,8 @@ export default function DashboardPage() {
         </section>
 
         {/* Procesos por etapa */}
-        <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="mb-3 text-base font-semibold text-slate-900">
+        <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+          <h2 className="mb-3 text-base font-semibold text-slate-900 dark:text-slate-100">
             {t('dashboard.processesByStage')}
           </h2>
           <div className="grid grid-cols-3 gap-2">
@@ -182,28 +184,28 @@ export default function DashboardPage() {
       </div>
 
       {/* Reporte semanal */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-base font-semibold text-slate-900">
+          <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">
             {t('dashboard.weeklyReport')}
           </h2>
           <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={() => setWeekOffset((w) => w - 1)}
-              className="rounded-lg border border-slate-300 p-1.5 text-slate-600 hover:bg-slate-50"
-              aria-label="Semana anterior"
+              className="rounded-lg border border-slate-300 p-1.5 text-slate-600 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
+              aria-label={t('dashboard.prevWeek')}
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
-            <span className="min-w-36 text-center text-sm font-medium text-slate-700">
+            <span className="min-w-36 text-center text-sm font-medium text-slate-700 dark:text-slate-300">
               {formatShortRange(weekStart, weekEnd)}
             </span>
             <button
               type="button"
               onClick={() => setWeekOffset((w) => w + 1)}
-              className="rounded-lg border border-slate-300 p-1.5 text-slate-600 hover:bg-slate-50"
-              aria-label="Semana siguiente"
+              className="rounded-lg border border-slate-300 p-1.5 text-slate-600 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
+              aria-label={t('dashboard.nextWeek')}
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -211,7 +213,7 @@ export default function DashboardPage() {
               <button
                 type="button"
                 onClick={() => setWeekOffset(0)}
-                className="rounded-lg border border-slate-300 px-2 py-1.5 text-xs text-slate-600 hover:bg-slate-50"
+                className="rounded-lg border border-slate-300 px-2 py-1.5 text-xs text-slate-600 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
               >
                 {t('dashboard.thisWeek')}
               </button>
@@ -221,16 +223,20 @@ export default function DashboardPage() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
-            <h3 className="mb-2 text-sm font-semibold text-slate-700">
+            <h3 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
               {t('dashboard.byProcess')}
             </h3>
             {report.byProcess.length === 0 ? (
-              <p className="text-sm text-slate-400">{t('dashboard.noWeekActivity')}</p>
+              <p className="text-sm text-slate-400 dark:text-slate-500">
+                {t('dashboard.noWeekActivity')}
+              </p>
             ) : (
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-slate-200 text-left text-xs text-slate-500">
-                    <th className="py-1.5 font-medium">{t('dashboard.processCol')}</th>
+                  <tr className="border-b border-slate-200 text-left text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400">
+                    <th className="py-1.5 font-medium">
+                      {t('dashboard.processCol')}
+                    </th>
                     <th className="py-1.5 text-right font-medium">
                       {t('dashboard.countCol')}
                     </th>
@@ -238,13 +244,16 @@ export default function DashboardPage() {
                 </thead>
                 <tbody>
                   {report.byProcess.map((row, i) => (
-                    <tr key={row.process?.id ?? `none-${i}`} className="border-b border-slate-100">
-                      <td className="py-1.5 text-slate-800">
+                    <tr
+                      key={row.process?.id ?? `none-${i}`}
+                      className="border-b border-slate-100 dark:border-slate-700/60"
+                    >
+                      <td className="py-1.5 text-slate-800 dark:text-slate-200">
                         {row.process
                           ? `${row.process.company} — ${row.process.role}`
                           : t('dashboard.withoutProcess')}
                       </td>
-                      <td className="py-1.5 text-right font-semibold text-slate-900">
+                      <td className="py-1.5 text-right font-semibold text-slate-900 dark:text-slate-100">
                         {row.count}
                       </td>
                     </tr>
@@ -255,7 +264,7 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h3 className="text-sm font-semibold text-slate-700">
+            <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">
               {t('dashboard.conversion')}
             </h3>
             <div className="flex gap-3">
@@ -276,7 +285,7 @@ export default function DashboardPage() {
               type="button"
               onClick={() => downloadReportMarkdownFor(weekStart, weekEnd)}
               disabled={report.total === 0}
-              className="mt-auto inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+              className="mt-auto inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
             >
               {weekOffset === 0 ? (
                 <Download className="h-4 w-4" />

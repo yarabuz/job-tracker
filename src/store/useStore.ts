@@ -5,15 +5,19 @@ import {
   SCHEMA_VERSION,
   type AppEvent,
   type DataState,
+  type Language,
   type Link,
   type Process,
   type Skill,
+  type ThemeSetting,
 } from './types'
 
 interface StoreActions {
   replaceAll: (data: DataState) => void
   markExported: () => void
   resetAll: () => void
+  setTheme: (theme: ThemeSetting) => void
+  setLang: (lang: Language) => void
   addProcess: (
     input: Omit<Process, 'id' | 'createdAt' | 'updatedAt'>,
   ) => Process
@@ -40,6 +44,7 @@ interface StoreActions {
     patch: Partial<Omit<Link, 'id' | 'createdAt'>>,
   ) => void
   deleteLink: (id: string) => void
+  reorderLinks: (activeId: string, overId: string) => void
 }
 
 export type Store = DataState & StoreActions
@@ -56,11 +61,20 @@ export const useStore = create<Store>()(
           events: data.events,
           skills: data.skills,
           links: data.links,
+          theme: data.theme,
+          lang: data.lang,
         }),
 
       markExported: () => set({ lastExportAt: new Date().toISOString() }),
 
-      resetAll: () => set({ ...emptyData() }),
+      resetAll: () => {
+        const { theme, lang } = useStore.getState()
+        set({ ...emptyData(), theme, lang })
+      },
+
+      setTheme: (theme) => set({ theme }),
+
+      setLang: (lang) => set({ lang }),
 
       addProcess: (input) => {
         const now = new Date().toISOString()
@@ -142,6 +156,17 @@ export const useStore = create<Store>()(
 
       deleteLink: (id) =>
         set((s) => ({ links: s.links.filter((l) => l.id !== id) })),
+
+      reorderLinks: (activeId, overId) =>
+        set((s) => {
+          const from = s.links.findIndex((l) => l.id === activeId)
+          const to = s.links.findIndex((l) => l.id === overId)
+          if (from === -1 || to === -1 || from === to) return s
+          const links = [...s.links]
+          const [moved] = links.splice(from, 1)
+          links.splice(to, 0, moved)
+          return { links }
+        }),
     }),
     {
       name: 'job-tracker-data',

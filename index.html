@@ -7,6 +7,21 @@
     <title>Job Tracker</title>
   </head>
   <body>
+    <script>
+      ;(function () {
+        try {
+          var s = JSON.parse(localStorage.getItem('job-tracker-data') || '{}')
+          var st = s.state || {}
+          var theme = st.theme || 'system'
+          var dark =
+            theme === 'dark' ||
+            (theme === 'system' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches)
+          if (dark) document.documentElement.classList.add('dark')
+          if (st.lang === 'en') document.documentElement.lang = 'en'
+        } catch (e) {}
+      })()
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

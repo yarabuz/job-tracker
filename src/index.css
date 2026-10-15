@@ -1,6 +1,64 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
   font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  @apply bg-slate-100 text-slate-900 antialiased;
+  @apply bg-slate-100 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+}
+
+/* FullCalendar: adaptar colores al modo oscuro */
+.dark {
+  --fc-page-bg-color: theme(colors.slate.800);
+  --fc-border-color: theme(colors.slate.700);
+  --fc-neutral-bg-color: theme(colors.slate.900);
+  --fc-neutral-text-color: theme(colors.slate.400);
+  --fc-today-bg-color: rgba(14, 165, 233, 0.08);
+  --fc-event-bg-color: inherit;
+  --fc-list-event-hover-bg-color: theme(colors.slate.700);
+  color-scheme: dark;
+}
+
+.dark .fc {
+  --fc-page-bg-color: #1e293b;
+  --fc-border-color: #334155;
+  --fc-neutral-bg-color: #0f172a;
+  --fc-neutral-text-color: #94a3b8;
+  --fc-today-bg-color: rgba(14, 165, 233, 0.08);
+}
+
+.dark .fc .fc-toolbar-title,
+.dark .fc .fc-col-header-cell-cushion,
+.dark .fc .fc-daygrid-day-number,
+.dark .fc .fc-list-day-text,
+.dark .fc .fc-list-day-side-text,
+.dark .fc .fc-timegrid-slot-label-cushion {
+  @apply text-slate-200;
+}
+
+.dark .fc .fc-button {
+  @apply border-slate-600 bg-slate-700 text-slate-200 hover:bg-slate-600;
+}
+
+.dark .fc .fc-button-primary:not(:disabled).fc-button-active,
+.dark .fc .fc-button-primary:not(:disabled):active {
+  @apply border-sky-600 bg-sky-600 text-white;
+}
+
+.dark .fc .fc-daygrid-day.fc-day-today {
+  @apply bg-sky-950/40;
+}
+
+.dark .fc .fc-list {
+  @apply border-slate-700 bg-slate-800;
+}
+
+.dark .fc .fc-list-event:hover td {
+  @apply bg-slate-700;
+}
+
+.dark .fc .fc-daygrid-day-number,
+.dark .fc .fc-list-day-text,
+.dark .fc .fc-list-day-side-text {
+  @apply no-underline;
 }

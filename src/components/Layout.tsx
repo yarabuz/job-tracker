@@ -4,14 +4,16 @@ import { useTranslation } from 'react-i18next'
 import {
   Bookmark,
   Briefcase,
+  BriefcaseBusiness,
   CalendarDays,
+  HelpCircle,
   LayoutDashboard,
   Menu,
   Settings,
   UserRound,
   X,
-  BriefcaseBusiness,
 } from 'lucide-react'
+import ThemeToggle, { LanguageToggle } from './ThemeToggle'
 
 interface NavItem {
   to: string
@@ -24,6 +26,7 @@ const navItems: NavItem[] = [
   { to: '/', key: 'nav.dashboard', icon: LayoutDashboard, end: true },
   { to: '/procesos', key: 'nav.procesos', icon: Briefcase },
   { to: '/calendario', key: 'nav.calendario', icon: CalendarDays },
+  { to: '/preguntas', key: 'nav.preguntas', icon: HelpCircle },
   { to: '/perfil', key: 'nav.perfil', icon: UserRound },
   { to: '/enlaces', key: 'nav.enlaces', icon: Bookmark },
   { to: '/preferencias', key: 'nav.preferencias', icon: Settings },
@@ -69,6 +72,7 @@ function Brand() {
 
 export default function Layout() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { t } = useTranslation()
 
   return (
     <div className="min-h-screen md:flex">
@@ -76,6 +80,10 @@ export default function Layout() {
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col bg-slate-900 md:flex">
         <Brand />
         <NavLinks />
+        <div className="mt-auto flex items-center justify-between gap-2 border-t border-slate-800 px-4 py-4">
+          <ThemeToggle />
+          <LanguageToggle dark />
+        </div>
       </aside>
 
       {/* Sidebar móvil */}
@@ -92,28 +100,34 @@ export default function Layout() {
                 type="button"
                 className="rounded-lg p-2 text-slate-300 hover:bg-slate-800 hover:text-white"
                 onClick={() => setMobileOpen(false)}
-                aria-label="Cerrar menú"
+                aria-label={t('common.close')}
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
             <NavLinks onNavigate={() => setMobileOpen(false)} />
+            <div className="mt-auto flex items-center justify-between gap-2 border-t border-slate-800 px-4 py-4">
+              <ThemeToggle />
+              <LanguageToggle dark />
+            </div>
           </aside>
         </div>
       )}
 
       {/* Contenido */}
       <div className="flex min-h-screen flex-1 flex-col md:ml-64">
-        <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-slate-200 bg-white/90 px-4 py-3 backdrop-blur md:hidden">
+        <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-slate-200 bg-white/90 px-4 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-900/90 md:hidden">
           <button
             type="button"
-            className="rounded-lg p-2 text-slate-600 hover:bg-slate-100"
+            className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
             onClick={() => setMobileOpen(true)}
-            aria-label="Abrir menú"
+            aria-label={t('common.openMenu')}
           >
             <Menu className="h-5 w-5" />
           </button>
-          <span className="font-semibold">Job Tracker</span>
+          <span className="font-semibold dark:text-slate-100">
+            {t('app.title')}
+          </span>
         </header>
         <main className="flex-1 p-4 md:p-8">
           <Outlet />

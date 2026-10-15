@@ -67,6 +67,11 @@ export function parseImportedData(
       : [],
     lastExportAt:
       typeof obj.lastExportAt === 'string' ? obj.lastExportAt : null,
+    theme:
+      obj.theme === 'light' || obj.theme === 'dark' || obj.theme === 'system'
+        ? obj.theme
+        : 'system',
+    lang: obj.lang === 'en' ? 'en' : 'es',
   }
 
   return { ok: true, data }

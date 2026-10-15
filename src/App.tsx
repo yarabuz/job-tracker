@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router'
 import Layout from './components/Layout'
 import DashboardPage from './pages/DashboardPage'
 import ProcesosPage from './pages/ProcesosPage'
+import PreguntasPage from './pages/PreguntasPage'
 import PerfilPage from './pages/PerfilPage'
 import EnlacesPage from './pages/EnlacesPage'
 import PreferenciasPage from './pages/PreferenciasPage'
@@ -30,6 +31,7 @@ export default function App() {
           }
         />
         <Route path="perfil" element={<PerfilPage />} />
+        <Route path="preguntas" element={<PreguntasPage />} />
         <Route path="enlaces" element={<EnlacesPage />} />
         <Route path="preferencias" element={<PreferenciasPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

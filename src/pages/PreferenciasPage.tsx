@@ -27,9 +27,13 @@ function Card({
   children: React.ReactNode
 }) {
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <h2 className="text-base font-semibold text-slate-900">{title}</h2>
-      <p className="mt-1 text-sm text-slate-500">{description}</p>
+    <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+      <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">
+        {title}
+      </h2>
+      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+        {description}
+      </p>
       <div className="mt-4">{children}</div>
     </section>
   )
@@ -54,6 +58,8 @@ export default function PreferenciasPage() {
       skills: state.skills,
       links: state.links,
       lastExportAt: state.lastExportAt,
+      theme: state.theme,
+      lang: state.lang,
     })
     setNotice(null)
   }
@@ -96,8 +102,8 @@ export default function PreferenciasPage() {
         <div
           className={`mb-4 flex items-center gap-2 rounded-lg border px-4 py-3 text-sm ${
             notice.kind === 'success'
-              ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
-              : 'border-red-200 bg-red-50 text-red-800'
+              ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-300'
+              : 'border-red-200 bg-red-50 text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-300'
           }`}
         >
           {notice.kind === 'success' ? (
@@ -123,7 +129,7 @@ export default function PreferenciasPage() {
               <Download className="h-4 w-4" />
               {t('pages.preferencias.export.button')}
             </button>
-            <span className="text-xs text-slate-500">
+            <span className="text-xs text-slate-500 dark:text-slate-400">
               {t('pages.preferencias.export.lastExport')}:{' '}
               {formatDate(lastExportAt, t)}
             </span>
@@ -144,7 +150,7 @@ export default function PreferenciasPage() {
           <button
             type="button"
             onClick={() => fileRef.current?.click()}
-            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
           >
             <Upload className="h-4 w-4" />
             {t('pages.preferencias.import.button')}
@@ -158,7 +164,7 @@ export default function PreferenciasPage() {
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-2 rounded-lg border border-red-300 bg-white px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50"
+            className="inline-flex items-center gap-2 rounded-lg border border-red-300 bg-white px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50 dark:border-red-800 dark:bg-slate-800 dark:text-red-400 dark:hover:bg-red-950"
           >
             <Trash2 className="h-4 w-4" />
             {t('pages.preferencias.reset.button')}
