@@ -33,10 +33,38 @@
     },
     "preferencias": {
       "title": "Preferencias",
-      "subtitle": "Exportá o importá tus datos para continuar en otro navegador"
+      "subtitle": "Exportá o importá tus datos para continuar en otro navegador",
+      "export": {
+        "title": "Exportar datos",
+        "description": "Descargá un archivo JSON con todos tus datos para respaldarlo o llevarlo a otro navegador o PC.",
+        "button": "Descargar JSON",
+        "lastExport": "Última exportación",
+        "never": "Nunca"
+      },
+      "import": {
+        "title": "Importar datos",
+        "description": "Cargá un archivo JSON exportado previamente. Reemplazará los datos actuales de este navegador.",
+        "button": "Seleccionar archivo JSON…",
+        "success": "Datos importados correctamente",
+        "confirm": "Esto reemplazará todos tus datos actuales. ¿Continuar?",
+        "errors": {
+          "invalid-json": "El archivo no es un JSON válido",
+          "invalid-schema": "El archivo no tiene el formato de Job Tracker",
+          "newer-version": "El archivo fue creado por una versión más nueva de la app"
+        }
+      },
+      "reset": {
+        "title": "Borrar todos los datos",
+        "description": "Elimina todo el contenido guardado en este navegador.",
+        "button": "Borrar datos",
+        "confirm1": "¿Seguro que querés borrar todos los datos de este navegador?",
+        "confirm2": "Esta acción no se puede deshacer. ¿Confirmar borrado definitivo?",
+        "success": "Datos borrados"
+      }
     }
   },
   "common": {
-    "comingSoon": "Próximamente"
+    "comingSoon": "Próximamente",
+    "cancel": "Cancelar"
   }
 }
