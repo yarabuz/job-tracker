@@ -1,6 +1,12 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { emptyData, SCHEMA_VERSION, type DataState, type Process } from './types'
+import {
+  emptyData,
+  SCHEMA_VERSION,
+  type AppEvent,
+  type DataState,
+  type Process,
+} from './types'
 
 interface StoreActions {
   replaceAll: (data: DataState) => void
@@ -14,6 +20,12 @@ interface StoreActions {
     patch: Partial<Omit<Process, 'id' | 'createdAt'>>,
   ) => void
   deleteProcess: (id: string) => void
+  addEvent: (input: Omit<AppEvent, 'id' | 'createdAt'>) => AppEvent
+  updateEvent: (
+    id: string,
+    patch: Partial<Omit<AppEvent, 'id' | 'createdAt'>>,
+  ) => void
+  deleteEvent: (id: string) => void
 }
 
 export type Store = DataState & StoreActions
@@ -62,6 +74,24 @@ export const useStore = create<Store>()(
           processes: s.processes.filter((p) => p.id !== id),
           events: s.events.filter((e) => e.processId !== id),
         })),
+
+      addEvent: (input) => {
+        const event: AppEvent = {
+          ...input,
+          id: crypto.randomUUID(),
+          createdAt: new Date().toISOString(),
+        }
+        set((s) => ({ events: [...s.events, event] }))
+        return event
+      },
+
+      updateEvent: (id, patch) =>
+        set((s) => ({
+          events: s.events.map((e) => (e.id === id ? { ...e, ...patch } : e)),
+        })),
+
+      deleteEvent: (id) =>
+        set((s) => ({ events: s.events.filter((e) => e.id !== id) })),
     }),
     {
       name: 'job-tracker-data',

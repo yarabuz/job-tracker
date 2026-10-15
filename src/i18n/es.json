@@ -63,6 +63,29 @@
       }
     }
   },
+  "eventTypes": {
+    "contact": "Contacto",
+    "interview": "Entrevista",
+    "followup": "Seguimiento",
+    "application": "Postulación",
+    "task": "Tarea"
+  },
+  "calendario": {
+    "new": "Nueva actividad",
+    "confirmDelete": "¿Eliminar esta actividad?",
+    "form": {
+      "newTitle": "Nueva actividad",
+      "editTitle": "Editar actividad",
+      "title": "Título",
+      "type": "Tipo",
+      "date": "Fecha",
+      "time": "Hora (opcional)",
+      "process": "Proceso asociado",
+      "noProcess": "Sin proceso",
+      "notes": "Notas",
+      "done": "Marcar como hecha"
+    }
+  },
   "stages": {
     "saved": "Guardado",
     "applied": "Postulado",
