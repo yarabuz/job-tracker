@@ -63,6 +63,23 @@
       }
     }
   },
+  "links": {
+    "new": "Nuevo enlace",
+    "searchPlaceholder": "Buscar título, URL, tag o nota…",
+    "allTags": "Todos",
+    "empty": "Todavía no guardaste enlaces. Agregá recursos con «Nuevo enlace».",
+    "noResults": "Ningún enlace coincide con el filtro.",
+    "confirmDelete": "¿Eliminar este enlace?",
+    "form": {
+      "newTitle": "Nuevo enlace",
+      "editTitle": "Editar enlace",
+      "title": "Título",
+      "url": "URL",
+      "tags": "Tags",
+      "tagsPlaceholder": "ej: cv, entrevistas, salarios",
+      "notes": "Notas"
+    }
+  },
   "skills": {
     "new": "Nueva skill",
     "hard": "Duras",

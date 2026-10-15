@@ -5,6 +5,7 @@ import {
   SCHEMA_VERSION,
   type AppEvent,
   type DataState,
+  type Link,
   type Process,
   type Skill,
 } from './types'
@@ -33,6 +34,12 @@ interface StoreActions {
     patch: Partial<Omit<Skill, 'id' | 'createdAt'>>,
   ) => void
   deleteSkill: (id: string) => void
+  addLink: (input: Omit<Link, 'id' | 'createdAt'>) => Link
+  updateLink: (
+    id: string,
+    patch: Partial<Omit<Link, 'id' | 'createdAt'>>,
+  ) => void
+  deleteLink: (id: string) => void
 }
 
 export type Store = DataState & StoreActions
@@ -117,6 +124,24 @@ export const useStore = create<Store>()(
 
       deleteSkill: (id) =>
         set((s) => ({ skills: s.skills.filter((sk) => sk.id !== id) })),
+
+      addLink: (input) => {
+        const link: Link = {
+          ...input,
+          id: crypto.randomUUID(),
+          createdAt: new Date().toISOString(),
+        }
+        set((s) => ({ links: [...s.links, link] }))
+        return link
+      },
+
+      updateLink: (id, patch) =>
+        set((s) => ({
+          links: s.links.map((l) => (l.id === id ? { ...l, ...patch } : l)),
+        })),
+
+      deleteLink: (id) =>
+        set((s) => ({ links: s.links.filter((l) => l.id !== id) })),
     }),
     {
       name: 'job-tracker-data',
