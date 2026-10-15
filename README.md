@@ -1,32 +1,57 @@
-# React + TypeScript + Vite
+# Job Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+App web para trackear tu búsqueda laboral: procesos, entrevistas, skills y recursos útiles. Sin backend ni registro: todo se guarda en el navegador y se respalda exportando/importando un archivo JSON.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + TypeScript + Vite
+- Tailwind CSS v4
+- Zustand (estado + persistencia en `localStorage`)
+- React Router v7
+- FullCalendar (vista mes / semana / lista)
+- dnd-kit (drag & drop del tablero Kanban)
+- i18next (interfaz en español)
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Dashboard**: registrar actividad en 1 click, actividad de la semana por tipo, próximos eventos, procesos por etapa y reporte semanal exportable a Markdown.
+- **Procesos**: tablero Kanban por etapas (Guardado → Postulado → En entrevista → Oferta / Rechazado / Sin respuesta) con drag & drop.
+- **Calendario**: contactos, entrevistas, postulaciones, seguimientos y tareas; eventos vinculables a un proceso.
+- **Perfil**: skills duras y blandas, obtenidas / por obtener, con nivel y notas objetivo.
+- **Enlaces útiles**: bookmarks con tags, búsqueda y filtro.
+- **Preferencias**: exportar/importar JSON (para continuar en otro navegador o PC) y borrar datos.
 
-## Expanding the Oxlint configuration
+## Desarrollo
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # build de producción en dist/
+npm run preview  # sirve el build localmente
+npm run lint     # oxlint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Deploy en Vercel
+
+1. Subí el repo a GitHub.
+2. En [vercel.com](https://vercel.com) → *Add New Project* → importá el repo.
+3. Vercel detecta Vite automáticamente (framework: **Vite**, build: `npm run build`, output: `dist`).
+4. Deploy. El `vercel.json` incluido reescribe las rutas al `index.html` para que funcione el router.
+
+## Datos
+
+- Se guardan bajo la clave `job-tracker-data` en el `localStorage` del navegador.
+- En **Preferencias** podés descargar un JSON con todo y volver a cargarlo en cualquier navegador/PC (reemplaza los datos actuales).
+- El archivo exportado incluye un `schemaVersion` para migraciones futuras.
+
+## Estructura
+
+```
+src/
+├─ components/    Layout y encabezados compartidos
+├─ features/      Módulos por área (procesos, calendario, perfil, enlaces)
+├─ lib/           Utilidades (fechas, reporte semanal, backup)
+├─ pages/         Una página por sección del sidebar
+├─ store/         Tipos de dominio + store Zustand con persist
+└─ i18n/          Traducciones (es)
+```
