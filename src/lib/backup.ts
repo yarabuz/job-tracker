@@ -67,6 +67,12 @@ export function parseImportedData(
       : [],
     lastExportAt:
       typeof obj.lastExportAt === 'string' ? obj.lastExportAt : null,
+    questionCategories: Array.isArray(obj.questionCategories)
+      ? (obj.questionCategories as DataState['questionCategories'])
+      : [],
+    questions: Array.isArray(obj.questions)
+      ? (obj.questions as DataState['questions'])
+      : [],
     theme:
       obj.theme === 'light' || obj.theme === 'dark' || obj.theme === 'system'
         ? obj.theme

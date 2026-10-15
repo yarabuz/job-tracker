@@ -59,6 +59,20 @@ export interface Link {
   createdAt: string
 }
 
+export interface QuestionCategory {
+  id: string
+  name: string
+  createdAt: string
+}
+
+export interface Question {
+  id: string
+  categoryId: string
+  question: string
+  answer: string
+  createdAt: string
+}
+
 export type ThemeSetting = 'light' | 'dark' | 'system'
 export type Language = 'es' | 'en'
 
@@ -68,6 +82,8 @@ export interface DataState {
   events: AppEvent[]
   skills: Skill[]
   links: Link[]
+  questionCategories: QuestionCategory[]
+  questions: Question[]
   lastExportAt: string | null
   theme: ThemeSetting
   lang: Language
@@ -80,6 +96,8 @@ export function emptyData(): DataState {
     events: [],
     skills: [],
     links: [],
+    questionCategories: [],
+    questions: [],
     lastExportAt: null,
     theme: 'system',
     lang: 'es',

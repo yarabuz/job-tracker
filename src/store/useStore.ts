@@ -8,6 +8,8 @@ import {
   type Language,
   type Link,
   type Process,
+  type Question,
+  type QuestionCategory,
   type Skill,
   type ThemeSetting,
 } from './types'
@@ -45,6 +47,15 @@ interface StoreActions {
   ) => void
   deleteLink: (id: string) => void
   reorderLinks: (activeId: string, overId: string) => void
+  addQuestionCategory: (input: Omit<QuestionCategory, 'id' | 'createdAt'>) => QuestionCategory
+  updateQuestionCategory: (id: string, name: string) => void
+  deleteQuestionCategory: (id: string) => void
+  addQuestion: (input: Omit<Question, 'id' | 'createdAt'>) => Question
+  updateQuestion: (
+    id: string,
+    patch: Partial<Omit<Question, 'id' | 'createdAt'>>,
+  ) => void
+  deleteQuestion: (id: string) => void
 }
 
 export type Store = DataState & StoreActions
@@ -61,6 +72,8 @@ export const useStore = create<Store>()(
           events: data.events,
           skills: data.skills,
           links: data.links,
+          questionCategories: data.questionCategories,
+          questions: data.questions,
           theme: data.theme,
           lang: data.lang,
         }),
@@ -167,6 +180,47 @@ export const useStore = create<Store>()(
           links.splice(to, 0, moved)
           return { links }
         }),
+
+      addQuestionCategory: (input) => {
+        const category: QuestionCategory = {
+          ...input,
+          id: crypto.randomUUID(),
+          createdAt: new Date().toISOString(),
+        }
+        set((s) => ({ questionCategories: [...s.questionCategories, category] }))
+        return category
+      },
+
+      updateQuestionCategory: (id, name) =>
+        set((s) => ({
+          questionCategories: s.questionCategories.map((c) =>
+            c.id === id ? { ...c, name } : c,
+          ),
+        })),
+
+      deleteQuestionCategory: (id) =>
+        set((s) => ({
+          questionCategories: s.questionCategories.filter((c) => c.id !== id),
+          questions: s.questions.filter((q) => q.categoryId !== id),
+        })),
+
+      addQuestion: (input) => {
+        const question: Question = {
+          ...input,
+          id: crypto.randomUUID(),
+          createdAt: new Date().toISOString(),
+        }
+        set((s) => ({ questions: [...s.questions, question] }))
+        return question
+      },
+
+      updateQuestion: (id, patch) =>
+        set((s) => ({
+          questions: s.questions.map((q) => (q.id === id ? { ...q, ...patch } : q)),
+        })),
+
+      deleteQuestion: (id) =>
+        set((s) => ({ questions: s.questions.filter((q) => q.id !== id) })),
     }),
     {
       name: 'job-tracker-data',

@@ -58,6 +58,8 @@ export default function PreferenciasPage() {
       events: state.events,
       skills: state.skills,
       links: state.links,
+      questionCategories: state.questionCategories,
+      questions: state.questions,
       lastExportAt: state.lastExportAt,
       theme: state.theme,
       lang: state.lang,

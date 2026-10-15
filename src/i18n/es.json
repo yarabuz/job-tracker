@@ -187,6 +187,28 @@
       "notes": "Notas"
     }
   },
+  "preguntas": {
+    "categories": "Categorías",
+    "emptyCategories": "Todavía no hay categorías. Creá la primera para empezar a armarte preguntas.",
+    "emptyQuestions": "Sin preguntas en esta categoría todavía.",
+    "reviewHint": "Tocá una pregunta para ver o ocultar su respuesta.",
+    "category": {
+      "new": "Nueva categoría",
+      "newTitle": "Nueva categoría",
+      "editTitle": "Editar categoría",
+      "name": "Nombre",
+      "confirmDelete": "¿Eliminar esta categoría?",
+      "confirmDeleteWithQuestions": "¿Eliminar esta categoría y sus {{count}} preguntas?"
+    },
+    "question": {
+      "new": "Nueva pregunta",
+      "newTitle": "Nueva pregunta",
+      "editTitle": "Editar pregunta",
+      "question": "Pregunta",
+      "answer": "Respuesta",
+      "confirmDelete": "¿Eliminar esta pregunta?"
+    }
+  },
   "fullcalendar": {
     "today": "Hoy",
     "month": "Mes",

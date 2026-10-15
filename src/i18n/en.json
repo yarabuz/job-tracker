@@ -187,6 +187,28 @@
       "notes": "Notes"
     }
   },
+  "preguntas": {
+    "categories": "Categories",
+    "emptyCategories": "No categories yet. Create the first one to start building questions.",
+    "emptyQuestions": "No questions in this category yet.",
+    "reviewHint": "Tap a question to show or hide its answer.",
+    "category": {
+      "new": "New category",
+      "newTitle": "New category",
+      "editTitle": "Edit category",
+      "name": "Name",
+      "confirmDelete": "Delete this category?",
+      "confirmDeleteWithQuestions": "Delete this category and its {{count}} questions?"
+    },
+    "question": {
+      "new": "New question",
+      "newTitle": "New question",
+      "editTitle": "Edit question",
+      "question": "Question",
+      "answer": "Answer",
+      "confirmDelete": "Delete this question?"
+    }
+  },
   "fullcalendar": {
     "today": "Today",
     "month": "Month",
