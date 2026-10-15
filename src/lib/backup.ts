@@ -10,16 +10,22 @@ export function exportFilename(): string {
   return `job-tracker-${date}.json`
 }
 
-export function downloadJson(data: DataState): void {
-  const blob = new Blob([JSON.stringify(data, null, 2)], {
-    type: 'application/json',
-  })
+export function downloadText(content: string, filename: string, mime: string): void {
+  const blob = new Blob([content], { type: mime })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = exportFilename()
+  a.download = filename
   a.click()
   URL.revokeObjectURL(url)
+}
+
+export function downloadJson(data: DataState): void {
+  downloadText(
+    JSON.stringify(data, null, 2),
+    exportFilename(),
+    'application/json',
+  )
 }
 
 export function parseImportedData(

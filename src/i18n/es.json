@@ -63,6 +63,24 @@
       }
     }
   },
+  "dashboard": {
+    "quickAdd": "Registrar actividad",
+    "weekActivity": "Actividad de la semana",
+    "totalWeek": "Total de actividades",
+    "activeProcesses": "Procesos activos",
+    "upcoming": "Próximos 7 días",
+    "noUpcoming": "No hay actividades pendientes en los próximos 7 días.",
+    "processesByStage": "Procesos por etapa",
+    "weeklyReport": "Reporte semanal",
+    "thisWeek": "Esta semana",
+    "byProcess": "Actividades por proceso",
+    "processCol": "Proceso",
+    "countCol": "Cantidad",
+    "withoutProcess": "Sin proceso",
+    "noWeekActivity": "Sin actividades en esta semana.",
+    "conversion": "Conversión de la semana",
+    "exportMarkdown": "Exportar reporte (Markdown)"
+  },
   "links": {
     "new": "Nuevo enlace",
     "searchPlaceholder": "Buscar título, URL, tag o nota…",
