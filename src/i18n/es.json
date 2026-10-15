@@ -63,8 +63,38 @@
       }
     }
   },
+  "stages": {
+    "saved": "Guardado",
+    "applied": "Postulado",
+    "interviewing": "En entrevista",
+    "offer": "Oferta",
+    "rejected": "Rechazado",
+    "ghosted": "Sin respuesta"
+  },
+  "procesos": {
+    "new": "Nuevo proceso",
+    "edit": "Editar",
+    "openJob": "Oferta",
+    "searchPlaceholder": "Buscar empresa, rol o nota…",
+    "empty": "Todavía no hay procesos. Creá el primero con «Nuevo proceso».",
+    "noResults": "Ningún proceso coincide con la búsqueda.",
+    "confirmDelete": "¿Eliminar este proceso y todas sus actividades asociadas?",
+    "form": {
+      "newTitle": "Nuevo proceso",
+      "editTitle": "Editar proceso",
+      "company": "Empresa",
+      "role": "Rol",
+      "stage": "Etapa",
+      "jobUrl": "URL de la oferta",
+      "salaryNote": "Nota de salario",
+      "notes": "Notas"
+    }
+  },
   "common": {
     "comingSoon": "Próximamente",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "close": "Cerrar"
   }
 }
