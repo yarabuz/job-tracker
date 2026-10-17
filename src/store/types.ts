@@ -1,11 +1,10 @@
-export const SCHEMA_VERSION = 1
+export const SCHEMA_VERSION = 2
 
 export type Stage =
   | 'saved'
   | 'applied'
   | 'interviewing'
-  | 'offer'
-  | 'rejected'
+  | 'finished'
   | 'ghosted'
 
 export type EventType =
@@ -17,6 +16,24 @@ export type EventType =
 
 export type SkillKind = 'hard' | 'soft'
 
+export interface Contact {
+  id: string
+  name: string
+  role?: string
+}
+
+export interface InterviewItem {
+  id: string
+  label: string
+  done: boolean
+  notes?: string
+}
+
+export interface InterviewGuide {
+  type?: string
+  items: InterviewItem[]
+}
+
 export interface Process {
   id: string
   company: string
@@ -24,6 +41,9 @@ export interface Process {
   stage: Stage
   jobUrl?: string
   salaryNote?: string
+  firstContactDate?: string
+  contacts?: Contact[]
+  interview?: InterviewGuide
   notes?: string
   createdAt: string
   updatedAt: string
@@ -75,6 +95,20 @@ export interface Question {
 
 export type ThemeSetting = 'light' | 'dark' | 'system'
 export type Language = 'es' | 'en'
+
+export function normalizeStage(stage: unknown): Stage {
+  if (stage === 'offer' || stage === 'rejected') return 'finished'
+  if (
+    stage === 'saved' ||
+    stage === 'applied' ||
+    stage === 'interviewing' ||
+    stage === 'finished' ||
+    stage === 'ghosted'
+  ) {
+    return stage
+  }
+  return 'saved'
+}
 
 export interface DataState {
   schemaVersion: number

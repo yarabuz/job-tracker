@@ -29,17 +29,11 @@ export const STAGES: StageMeta[] = [
       'bg-amber-50 text-amber-800 dark:bg-amber-950 dark:text-amber-300',
   },
   {
-    key: 'offer',
-    labelKey: 'stages.offer',
+    key: 'finished',
+    labelKey: 'stages.finished',
     accent: 'border-emerald-300 dark:border-emerald-800',
     headerBg:
       'bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300',
-  },
-  {
-    key: 'rejected',
-    labelKey: 'stages.rejected',
-    accent: 'border-rose-300 dark:border-rose-800',
-    headerBg: 'bg-rose-50 text-rose-800 dark:bg-rose-950 dark:text-rose-300',
   },
   {
     key: 'ghosted',

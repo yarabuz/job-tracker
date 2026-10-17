@@ -1,4 +1,4 @@
-import { emptyData, type DataState } from '../store/types'
+import { emptyData, normalizeStage, type DataState } from '../store/types'
 
 export function exportFilename(): string {
   const d = new Date()
@@ -46,7 +46,7 @@ export function parseImportedData(
   if (typeof obj.schemaVersion !== 'number') {
     return { ok: false, error: 'invalid-schema' }
   }
-  if (obj.schemaVersion > 1) {
+  if (obj.schemaVersion > 2) {
     return { ok: false, error: 'newer-version' }
   }
 
@@ -56,7 +56,12 @@ export function parseImportedData(
 
   const data: DataState = {
     ...base,
-    processes: Array.isArray(obj.processes) ? (obj.processes as DataState['processes']) : [],
+    processes: Array.isArray(obj.processes)
+      ? (obj.processes as DataState['processes']).map((p) => ({
+          ...p,
+          stage: normalizeStage(p.stage),
+        }))
+      : [],
     events: Array.isArray(obj.events) ? (obj.events as DataState['events']) : [],
     skills: Array.isArray(obj.skills) ? (obj.skills as DataState['skills']) : [],
     links: Array.isArray(obj.links)

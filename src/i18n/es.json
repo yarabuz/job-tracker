@@ -166,8 +166,7 @@
     "saved": "Guardado",
     "applied": "Postulado",
     "interviewing": "En entrevista",
-    "offer": "Oferta",
-    "rejected": "Rechazado",
+    "finished": "Finalizado",
     "ghosted": "Sin respuesta"
   },
   "procesos": {
@@ -186,6 +185,23 @@
       "stage": "Etapa",
       "jobUrl": "URL de la oferta",
       "salaryNote": "Nota de salario",
+      "firstContactDate": "Fecha del primer contacto",
+      "contacts": "Personas",
+      "addContact": "Agregar persona",
+      "contactName": "Nombre",
+      "contactRole": "Cargo (opcional)",
+      "interviewGuide": "Guía de entrevista",
+      "interviewType": "Tipo de entrevista",
+      "interviewTypePlaceholder": "Ej: RRHH, técnica, managerial, final…",
+      "addPoint": "Agregar punto",
+      "editPoint": "Editar punto",
+      "interviewPoints": {
+        "flow": "¿Cómo es el flujo de entrevistas?",
+        "type": "¿Qué tipo de entrevista es? (RRHH, técnica, managerial…)",
+        "salary": "¿El salario estaba incluido en la oferta?",
+        "feedback": "Pedido de feedback y próximos pasos",
+        "myQuestions": "Preguntas que quiero hacerles"
+      },
       "notes": "Notas"
     }
   },

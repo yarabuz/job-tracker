@@ -1,6 +1,6 @@
 import { useDraggable } from '@dnd-kit/core'
 import { useTranslation } from 'react-i18next'
-import { ExternalLink, StickyNote } from 'lucide-react'
+import { CalendarDays, ExternalLink, StickyNote, Users } from 'lucide-react'
 import type { Process } from '../../store/types'
 
 export default function ProcessCard({
@@ -50,11 +50,33 @@ export default function ProcessCard({
         </button>
       </div>
 
-      {(process.salaryNote || process.jobUrl) && (
+      {(process.salaryNote ||
+        process.jobUrl ||
+        process.firstContactDate ||
+        (process.contacts && process.contacts.length > 0)) && (
         <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
           {process.salaryNote && (
             <span className="rounded bg-slate-100 px-1.5 py-0.5 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
               {process.salaryNote}
+            </span>
+          )}
+          {process.firstContactDate && (
+            <span className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400">
+              <CalendarDays className="h-3 w-3" />
+              {process.firstContactDate}
+            </span>
+          )}
+          {process.contacts && process.contacts.length > 0 && (
+            <span
+              className="inline-flex min-w-0 items-center gap-1 text-slate-500 dark:text-slate-400"
+              title={process.contacts
+                .map((c) => (c.role ? `${c.name} (${c.role})` : c.name))
+                .join(', ')}
+            >
+              <Users className="h-3 w-3 shrink-0" />
+              <span className="truncate">
+                {process.contacts.map((c) => c.name).join(', ')}
+              </span>
             </span>
           )}
           {process.jobUrl && (

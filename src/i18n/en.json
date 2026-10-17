@@ -166,8 +166,7 @@
     "saved": "Saved",
     "applied": "Applied",
     "interviewing": "Interviewing",
-    "offer": "Offer",
-    "rejected": "Rejected",
+    "finished": "Completed",
     "ghosted": "No response"
   },
   "procesos": {
@@ -186,6 +185,23 @@
       "stage": "Stage",
       "jobUrl": "Job posting URL",
       "salaryNote": "Salary note",
+      "firstContactDate": "First contact date",
+      "contacts": "People",
+      "addContact": "Add person",
+      "contactName": "Name",
+      "contactRole": "Role (optional)",
+      "interviewGuide": "Interview guide",
+      "interviewType": "Interview type",
+      "interviewTypePlaceholder": "e.g. HR, technical, managerial, final…",
+      "addPoint": "Add point",
+      "editPoint": "Edit point",
+      "interviewPoints": {
+        "flow": "What does the interview process look like?",
+        "type": "What type of interview is it? (HR, technical, managerial…)",
+        "salary": "Was the salary included in the offer?",
+        "feedback": "Request feedback and next steps",
+        "myQuestions": "Questions I want to ask them"
+      },
       "notes": "Notes"
     }
   },

@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import {
   emptyData,
+  normalizeStage,
   SCHEMA_VERSION,
   type AppEvent,
   type DataState,
@@ -224,7 +225,17 @@ export const useStore = create<Store>()(
     }),
     {
       name: 'job-tracker-data',
-      version: 1,
+      version: 2,
+      migrate: (persisted) => {
+        const state = persisted as { processes?: Process[] } | undefined
+        if (state?.processes) {
+          state.processes = state.processes.map((p) => ({
+            ...p,
+            stage: normalizeStage(p.stage),
+          }))
+        }
+        return persisted as DataState
+      },
     },
   ),
 )
