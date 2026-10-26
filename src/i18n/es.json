@@ -210,6 +210,9 @@
     "emptyCategories": "Todavía no hay categorías. Creá la primera para empezar a armarte preguntas.",
     "emptyQuestions": "Sin preguntas en esta categoría todavía.",
     "reviewHint": "Tocá una pregunta para ver o ocultar su respuesta.",
+    "drag": "Arrastrar",
+    "categoryDragHint": "Arrastrá el ícono de la derecha para reordenar las categorías.",
+    "questionDragHint": "Arrastrá el ícono de la izquierda para reordenar las preguntas.",
     "category": {
       "new": "Nueva categoría",
       "newTitle": "Nueva categoría",

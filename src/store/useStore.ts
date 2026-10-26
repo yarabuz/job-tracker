@@ -51,12 +51,14 @@ interface StoreActions {
   addQuestionCategory: (input: Omit<QuestionCategory, 'id' | 'createdAt'>) => QuestionCategory
   updateQuestionCategory: (id: string, name: string) => void
   deleteQuestionCategory: (id: string) => void
+  reorderQuestionCategories: (activeId: string, overId: string) => void
   addQuestion: (input: Omit<Question, 'id' | 'createdAt'>) => Question
   updateQuestion: (
     id: string,
     patch: Partial<Omit<Question, 'id' | 'createdAt'>>,
   ) => void
   deleteQuestion: (id: string) => void
+  reorderQuestions: (categoryId: string, activeId: string, overId: string) => void
 }
 
 export type Store = DataState & StoreActions
@@ -205,6 +207,17 @@ export const useStore = create<Store>()(
           questions: s.questions.filter((q) => q.categoryId !== id),
         })),
 
+      reorderQuestionCategories: (activeId, overId) =>
+        set((s) => {
+          const from = s.questionCategories.findIndex((c) => c.id === activeId)
+          const to = s.questionCategories.findIndex((c) => c.id === overId)
+          if (from === -1 || to === -1 || from === to) return s
+          const questionCategories = [...s.questionCategories]
+          const [moved] = questionCategories.splice(from, 1)
+          questionCategories.splice(to, 0, moved)
+          return { questionCategories }
+        }),
+
       addQuestion: (input) => {
         const question: Question = {
           ...input,
@@ -222,6 +235,28 @@ export const useStore = create<Store>()(
 
       deleteQuestion: (id) =>
         set((s) => ({ questions: s.questions.filter((q) => q.id !== id) })),
+
+      reorderQuestions: (categoryId, activeId, overId) =>
+        set((s) => {
+          const positions: number[] = []
+          const group: Question[] = []
+          s.questions.forEach((q, i) => {
+            if (q.categoryId === categoryId) {
+              positions.push(i)
+              group.push(q)
+            }
+          })
+          const from = group.findIndex((q) => q.id === activeId)
+          const to = group.findIndex((q) => q.id === overId)
+          if (from === -1 || to === -1 || from === to) return s
+          const [moved] = group.splice(from, 1)
+          group.splice(to, 0, moved)
+          const questions = [...s.questions]
+          positions.forEach((idx, i) => {
+            questions[idx] = group[i]
+          })
+          return { questions }
+        }),
     }),
     {
       name: 'job-tracker-data',
