@@ -8,7 +8,7 @@ import {
   useSensors,
 } from '@dnd-kit/core'
 import type { DragEndEvent } from '@dnd-kit/core'
-import { SortableContext, verticalListStrategy } from '@dnd-kit/sortable'
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Plus } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
 import { useStore } from '../store/useStore'
@@ -161,7 +161,7 @@ export default function PreguntasPage() {
             >
               <SortableContext
                 items={categories.map((c) => c.id)}
-                strategy={verticalListStrategy}
+                strategy={verticalListSortingStrategy}
               >
                 <ul className="flex flex-col gap-1">
                   {categories.map((cat) => (
@@ -216,7 +216,7 @@ export default function PreguntasPage() {
                 >
                   <SortableContext
                     items={categoryQuestions.map((q) => q.id)}
-                    strategy={verticalListStrategy}
+                    strategy={verticalListSortingStrategy}
                   >
                     <div className="flex flex-col gap-2">
                       {categoryQuestions.map((q) => (
