@@ -121,8 +121,12 @@
   },
   "quotes": {
     "new": "Nueva Cita",
+    "searchPlaceholder": "Buscar una cita o autor…",
     "confirmDelete": "¿Eliminar este cita?",
     "drag": "Arrastrar",
+    "dragHint": "Arrastrá el ícono de la derecha para reordenar.",
+    "empty": "Todavía no guardaste citas. Agregá recursos con «Nueva cita».",
+    "noResults": "Ningún enlace coincide con el filtro.",
     "title": "Citas",
     "subtitle": "Frases celebres o para meditar.",
     "form": {

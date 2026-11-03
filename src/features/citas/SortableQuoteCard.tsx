@@ -38,7 +38,7 @@ export default function SortableQuoteCard({
             className={`rounded p-1 text-slate-300 hover:text-slate-500 dark:text-slate-600 dark:hover:text-slate-400 ${
               disabled ? 'cursor-not-allowed opacity-40' : 'cursor-grab'
             }`}
-            aria-label={t('links.drag')}
+            aria-label={t('quotes.drag')}
             title={t('quotes.drag')}
           >
             <GripVertical className="h-4 w-4" />

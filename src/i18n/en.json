@@ -121,8 +121,12 @@
   },
   "quotes": {
     "new": "New Quote",
+    "searchPlaceholder": "Search quote or author name…",
     "confirmDelete": "Delete this quote?",
+    "empty": "You haven't saved any quote yet. Add resources with «New quote».",
+    "noResults": "No link matches the filter.",
     "drag": "Drag",
+    "dragHint": "Drag the icon on the right to reorder.",
     "title": "Quotes",
     "subtitle": "Famous quotes",
     "form": {
