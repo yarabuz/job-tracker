@@ -10,7 +10,6 @@ import CalendarioView from '../features/calendario/CalendarioView'
 import EventFormModal, {
   type EventFormValues,
 } from '../features/calendario/EventFormModal'
-import { STAGES } from '../features/procesos/stages'
 
 type ModalState =
   | { mode: 'new'; defaultDate?: string }
