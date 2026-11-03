@@ -60,6 +60,7 @@ export default function PreferenciasPage() {
       links: state.links,
       questionCategories: state.questionCategories,
       questions: state.questions,
+      quotes: state.quotes,
       lastExportAt: state.lastExportAt,
       theme: state.theme,
       lang: state.lang,
