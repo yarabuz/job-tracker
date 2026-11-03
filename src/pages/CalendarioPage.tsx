@@ -10,6 +10,7 @@ import CalendarioView from '../features/calendario/CalendarioView'
 import EventFormModal, {
   type EventFormValues,
 } from '../features/calendario/EventFormModal'
+import { STAGES } from '../features/procesos/stages'
 
 type ModalState =
   | { mode: 'new'; defaultDate?: string }
@@ -24,6 +25,7 @@ export default function CalendarioPage() {
   const updateEvent = useStore((s) => s.updateEvent)
   const deleteEvent = useStore((s) => s.deleteEvent)
   const [modal, setModal] = useState<ModalState>(null)
+  const validStages = ["saved", "applied", "interviewing"]
 
   const handleSubmit = (values: EventFormValues) => {
     if (modal?.mode === 'edit') {
@@ -75,7 +77,7 @@ export default function CalendarioPage() {
         <EventFormModal
           initial={modal.mode === 'edit' ? modal.event : undefined}
           defaultDate={modal.mode === 'new' ? modal.defaultDate : undefined}
-          processes={processes}
+          processes={processes.filter(p => validStages.includes(p.stage))}
           onSubmit={handleSubmit}
           onClose={() => setModal(null)}
           onDelete={modal.mode === 'edit' ? handleDelete : undefined}
