@@ -11,6 +11,7 @@ import {
   type Process,
   type Question,
   type QuestionCategory,
+  type Quote,
   type Skill,
   type ThemeSetting,
 } from './types'
@@ -48,6 +49,13 @@ interface StoreActions {
   ) => void
   deleteLink: (id: string) => void
   reorderLinks: (activeId: string, overId: string) => void
+  addQuote: (input: Omit<Quote, 'id' | 'createdAt'>) => Quote
+  updateQuote: (
+    id: string,
+    patch: Partial<Omit<Quote, 'id' | 'createdAt'>>,
+  ) => void
+  deleteQuote: (id: string) => void
+  reorderQuotes: (activeId: string, overId: string) => void
   addQuestionCategory: (input: Omit<QuestionCategory, 'id' | 'createdAt'>) => QuestionCategory
   updateQuestionCategory: (id: string, name: string) => void
   deleteQuestionCategory: (id: string) => void
@@ -182,6 +190,35 @@ export const useStore = create<Store>()(
           const [moved] = links.splice(from, 1)
           links.splice(to, 0, moved)
           return { links }
+        }),
+
+      addQuote: (input) => {
+        const quote: Quote = {
+          ...input,
+          id: crypto.randomUUID(),
+          createdAt: new Date().toISOString(),
+        }
+        set((s) => ({ quotes: [...s.quotes, quote] }))
+        return quote
+      },
+
+      updateQuote: (id, patch) =>
+        set((s) => ({
+          quotes: s.quotes.map((l) => (l.id === id ? { ...l, ...patch } : l)),
+        })),
+
+      deleteQuote: (id) =>
+        set((s) => ({ quotes: s.quotes.filter((l) => l.id !== id) })),
+
+      reorderQuotes: (activeId, overId) =>
+        set((s) => {
+          const from = s.quotes.findIndex((l) => l.id === activeId)
+          const to = s.quotes.findIndex((l) => l.id === overId)
+          if (from === -1 || to === -1 || from === to) return s
+          const quotes = [...s.quotes]
+          const [moved] = quotes.splice(from, 1)
+          quotes.splice(to, 0, moved)
+          return { quotes }
         }),
 
       addQuestionCategory: (input) => {

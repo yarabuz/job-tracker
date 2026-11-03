@@ -6,6 +6,7 @@
     "dashboard": "Dashboard",
     "procesos": "Procesos",
     "calendario": "Calendario",
+    "citas": "Citas",
     "preguntas": "Preguntas",
     "perfil": "Perfil",
     "enlaces": "Enlaces útiles",
@@ -116,6 +117,20 @@
       "tags": "Tags",
       "tagsPlaceholder": "ej: cv, entrevistas, salarios",
       "notes": "Notas"
+    }
+  },
+  "quotes": {
+    "new": "Nueva Cita",
+    "confirmDelete": "¿Eliminar este cita?",
+    "drag": "Arrastrar",
+    "title": "Citas",
+    "subtitle": "Frases celebres o para meditar.",
+    "form": {
+        "newTitle": "Nueva Cita",
+        "editTitle": "Editar Cita",
+        "defaultAuthor": "Anónimo",
+        "quote": "Cita",
+        "author": "Autor"
     }
   },
   "skills": {

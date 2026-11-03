@@ -93,6 +93,13 @@ export interface Question {
   createdAt: string
 }
 
+export interface Quote {
+    id: string
+    quote: string
+    author?: string
+    createdAt: string
+}
+
 export type ThemeSetting = 'light' | 'dark' | 'system'
 export type Language = 'es' | 'en'
 
@@ -118,6 +125,7 @@ export interface DataState {
   links: Link[]
   questionCategories: QuestionCategory[]
   questions: Question[]
+  quotes: Quote[]
   lastExportAt: string | null
   theme: ThemeSetting
   lang: Language
@@ -132,6 +140,7 @@ export function emptyData(): DataState {
     links: [],
     questionCategories: [],
     questions: [],
+    quotes: [],
     lastExportAt: null,
     theme: 'system',
     lang: 'es',

@@ -6,6 +6,7 @@
     "dashboard": "Dashboard",
     "procesos": "Processes",
     "calendario": "Calendar",
+    "citas": "Quotes",
     "preguntas": "Questions",
     "perfil": "Profile",
     "enlaces": "Useful links",
@@ -116,6 +117,20 @@
       "tags": "Tags",
       "tagsPlaceholder": "e.g. resume, interviews, salaries",
       "notes": "Notes"
+    }
+  },
+  "quotes": {
+    "new": "New Quote",
+    "confirmDelete": "Delete this quote?",
+    "drag": "Drag",
+    "title": "Quotes",
+    "subtitle": "Famous quotes",
+    "form": {
+        "newTitle": "New quote",
+        "editTitle": "Edit Quote",
+        "defaultAuthor": "Anonimous",
+        "quote": "Quote",
+        "author": "Author"
     }
   },
   "skills": {
